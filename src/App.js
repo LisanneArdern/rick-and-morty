@@ -9,13 +9,23 @@ export default function App() {
   useEffect(() => {
     fetch(url)
       .then(res => res.json())
-      .then(resBody => setCharacters(resBody.results))
+      .then(res => setCharacters(res.results))
+      .catch(error => console.error(error))
   }, [url])
   return (
     <div className="App">
       {characters.map(character => {
-        const { id, name, species, gender } = character
-        return <Card key={id} name={name} species={species} gender={gender} />
+        const { id, name, image, status, species, gender } = character
+        return (
+          <Card
+            key={id}
+            name={name}
+            image={image}
+            status={status}
+            species={species}
+            gender={gender}
+          />
+        )
       })}
     </div>
   )

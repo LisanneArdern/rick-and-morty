@@ -1,0 +1,12 @@
+.Card {
+  padding: 10px;
+  margin: 10px auto;
+  border-radius: 8px;
+  background-color: #ccc;
+  max-width: 400px;
+}
+
+.Card__list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
