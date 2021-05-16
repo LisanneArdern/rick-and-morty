@@ -1,0 +1,10 @@
+.Header__image {
+  width: 100%;
+  height: auto;
+}
+
+@media (min-width: 650px) {
+  .Header__image {
+    width: 70%;
+  }
+}
