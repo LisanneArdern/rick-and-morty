@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import Card from './Card'
 import './App.css'
+import Header from './Header'
+import Card from './Card'
 
 export default function App() {
   const url = 'https://rickandmortyapi.com/api/character'
@@ -14,19 +15,22 @@ export default function App() {
   }, [url])
   return (
     <div className="App">
-      {characters.map(character => {
-        const { id, name, image, status, species, gender } = character
-        return (
-          <Card
-            key={id}
-            name={name}
-            image={image}
-            status={status}
-            species={species}
-            gender={gender}
-          />
-        )
-      })}
+      <Header />
+      <div className="App__card-container">
+        {characters.map(character => {
+          const { id, name, image, status, species, gender } = character
+          return (
+            <Card
+              key={id}
+              name={name}
+              image={image}
+              status={status}
+              species={species}
+              gender={gender}
+            />
+          )
+        })}
+      </div>
     </div>
   )
 }

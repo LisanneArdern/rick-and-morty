@@ -1,4 +1,11 @@
 .App {
   text-align: center;
-  padding: 10px;
+}
+
+.App__card-container {
+  margin: 10px auto;
+  max-width: 1200px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
 }
