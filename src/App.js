@@ -4,13 +4,21 @@ import Header from './Header'
 import Card from './Card'
 
 export default function App() {
-  const url = 'https://rickandmortyapi.com/api/character'
+  const [url, setUrl] = useState('https://rickandmortyapi.com/api/character')
   const [characters, setCharacters] = useState([])
+  const [nextPage, setNextPage] = useState(
+    '"https://rickandmortyapi.com/api/character?page=2"'
+  )
+  const [prevPage, setPrevPage] = useState('')
 
   useEffect(() => {
     fetch(url)
       .then(res => res.json())
-      .then(res => setCharacters(res.results))
+      .then(res => {
+        setCharacters(res.results)
+        setNextPage(res.info.next)
+        setPrevPage(res.info.prev)
+      })
       .catch(error => console.error(error))
   }, [url])
   return (
@@ -31,6 +39,12 @@ export default function App() {
           )
         })}
       </div>
+      <button className="App__button" onClick={() => setUrl(prevPage)}>
+        Previous Page
+      </button>
+      <button className="App__button" onClick={() => setUrl(nextPage)}>
+        Next Page
+      </button>
     </div>
   )
 }
